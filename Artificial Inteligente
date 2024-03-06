@@ -1,0 +1,27 @@
+import requests
+
+# Endpoint da API
+url = 'https://api.seuservico.com/v1/auth/token'
+
+# Substitua estes com seus próprios dados, se necessário
+headers = {
+    'Content-Type': 'application/json',
+}
+
+# Dados para autenticação, se necessário
+data = {
+    'username': 'seu_usuario',
+    'password': 'sua_senha'
+}
+
+# Enviando uma requisição POST para obter o token
+response = requests.post(url, headers=headers, json=data)
+
+# Verifique o status da resposta
+if response.status_code == 200:
+    # Processamento bem-sucedido, extraindo o token
+    token = response.json().get('token')
+    print("Token de autenticação obtido:", token)
+else:
+    print("Falha ao obter o token:", response.status_code)
+
